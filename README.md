@@ -1,6 +1,6 @@
 # Cloudflare Warp Client In Docker (for testing)
 
-## Start docker continer
+## Start docker container
 ```bash
 docker run -it --rm \
   --cap-add=NET_ADMIN \
