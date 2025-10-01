@@ -12,6 +12,8 @@ docker run -it --rm \
 ## Install dependencies and turn on cloudflare warp
 ```bash
 cat > start.sh << 'EOF'
+#!/bin/bash
+
 set -e
 apt-get update
 apt-get install -y curl gnupg lsb-release sudo
@@ -32,6 +34,7 @@ dbus-daemon --config-file=/usr/share/dbus-1/system.conf
 (nohup warp-svc > /var/log/warp-svc.log 2>&1 &)
 sleep 2
 warp-cli registration new
+# cat /var/lib/cloudflare-warp/reg.json
 warp-cli connect
 sleep 2
 curl https://www.cloudflare.com/cdn-cgi/trace/
