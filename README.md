@@ -22,7 +22,7 @@ echo "deb [signed-by=/usr/share/keyrings/cloudflare-warp-archive-keyring.gpg] ht
 apt-get update
 apt-get install -y cloudflare-warp
 apt-get clean
-apt-get autoremove -y
+rm -rf /var/lib/apt/lists/*
 mkdir -p /root/.local/share/warp
 echo -n 'yes' > /root/.local/share/warp/accepted-tos.txt
 mkdir -p /dev/net
