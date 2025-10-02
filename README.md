@@ -51,6 +51,11 @@ docker run -d \
   --cap-add=NET_ADMIN \
   --sysctl net.ipv6.conf.all.disable_ipv6=0 \
   --sysctl net.ipv4.conf.all.src_valid_mark=1 \
+  --health-cmd="curl -fsSL https://www.cloudflare.com/cdn-cgi/trace/ | grep warp=on || exit 1" \
+  --health-interval=5s \
+  --health-timeout=3s \
+  --health-retries=5 \
+  --health-start-period=5s \
   --restart unless-stopped \
   larryteal/cwcid:latest
 ```
