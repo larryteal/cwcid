@@ -27,7 +27,6 @@ mkdir -p /root/.local/share/warp
 echo -n 'yes' > /root/.local/share/warp/accepted-tos.txt
 mkdir -p /dev/net
 (mknod /dev/net/tun c 10 200 || true)
-chmod 600 /dev/net/tun
 mkdir -p /run/dbus
 rm -f /run/dbus/pid
 dbus-daemon --system
