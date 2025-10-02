@@ -26,11 +26,11 @@ rm -rf /var/lib/apt/lists/*
 mkdir -p /root/.local/share/warp
 echo -n 'yes' > /root/.local/share/warp/accepted-tos.txt
 mkdir -p /dev/net
-mknod /dev/net/tun c 10 200
+(mknod /dev/net/tun c 10 200 || true)
 chmod 600 /dev/net/tun
 mkdir -p /run/dbus
 rm -f /run/dbus/pid
-dbus-daemon --config-file=/usr/share/dbus-1/system.conf
+dbus-daemon --system
 (nohup warp-svc > /var/log/warp-svc.log 2>&1 &)
 sleep 2
 warp-cli registration new
