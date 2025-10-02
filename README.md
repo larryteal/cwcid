@@ -42,3 +42,19 @@ EOF
 ```bash
 bash start.sh
 ```
+
+# Usage
+
+```bash
+docker run -d \
+  --name vpn \
+  --cap-add=NET_ADMIN \
+  --sysctl net.ipv6.conf.all.disable_ipv6=0 \
+  --sysctl net.ipv4.conf.all.src_valid_mark=1 \
+  --restart unless-stopped \
+  larryteal/cwcid:latest
+```
+```bash
+docker run --rm --network=container:vpn alpine/curl -fsSL https://www.cloudflare.com/cdn-cgi/trace/
+```
+
